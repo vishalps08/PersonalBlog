@@ -7,6 +7,10 @@
     "doc": "docs"
   },
   "scripts": {
+    "install:all": "npm install --prefix apps/api && npm install --prefix apps/blog && npm install --prefix apps/admin",
+    "dev:api": "npm --prefix apps/api run dev",
+    "dev:blog": "npm --prefix apps/blog run dev",
+    "dev:admin": "npm --prefix apps/admin run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
