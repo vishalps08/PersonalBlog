@@ -8,7 +8,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-6">
         <Link to="/" className="flex items-center gap-2 font-display text-xl font-600 text-ink dark:text-paper">
           <Aperture size={20} strokeWidth={1.5} className="text-safelight" />
-          Personal Blog
+          The Safelight
         </Link>
         <div className="flex items-center gap-4">
           <nav className="flex gap-6 font-mono text-xs uppercase tracking-wide text-ash">

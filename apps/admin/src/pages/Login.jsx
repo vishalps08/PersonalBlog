@@ -30,7 +30,7 @@ export default function Login() {
         className="w-full max-w-sm rounded-lg bg-paper p-8 shadow-xl dark:bg-night-surface"
       >
         <h1 className="mb-1 font-display text-2xl font-700 text-ink dark:text-paper">
-          Personal Blog
+          The Safelight
         </h1>
         <p className="mb-6 font-mono text-xs text-ash">admin sign in</p>
 

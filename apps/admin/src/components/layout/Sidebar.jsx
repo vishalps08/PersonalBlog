@@ -16,7 +16,7 @@ export default function Sidebar() {
     <aside className="flex h-screen w-56 flex-col justify-between bg-ink px-4 py-6 text-paper">
       <div>
         <h1 className="mb-8 font-display text-xl font-600 tracking-tight">
-          Personal Blog
+          The Safelight
         </h1>
         <nav className="flex flex-col gap-1">
           {navItems.map(({ to, label, icon: Icon, end }) => (
@@ -25,10 +25,9 @@ export default function Sidebar() {
               to={to}
               end={end}
               className={({ isActive }) =>
-                `flex items-center gap-2 rounded px-3 py-2 text-sm transition-colors ${
-                  isActive
-                    ? "bg-graphite text-paper"
-                    : "text-ash hover:bg-graphite hover:text-paper"
+                `flex items-center gap-2 rounded px-3 py-2 text-sm transition-colors ${isActive
+                  ? "bg-graphite text-paper"
+                  : "text-ash hover:bg-graphite hover:text-paper"
                 }`
               }
             >
