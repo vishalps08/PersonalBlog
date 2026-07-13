@@ -6,6 +6,10 @@ body {
   @apply bg-paper text-ink font-sans antialiased;
 }
 
+.dark body {
+  @apply bg-night text-paper;
+}
+
 /* Signature element — a quiet nod to film sprockets, used once as a
    structural divider between the dark chrome and the paper canvas. */
 .sprocket-divider {

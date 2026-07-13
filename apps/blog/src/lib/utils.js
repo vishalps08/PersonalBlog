@@ -16,3 +16,9 @@ export function formatDate(dateString) {
     day: "numeric",
   });
 }
+
+export function readingTime(html) {
+  const words = stripHtml(html).trim().split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min read`;
+}

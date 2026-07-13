@@ -37,13 +37,13 @@ export default function PostList() {
   }
 
   if (loading) {
-    return <p className="font-mono text-sm text-ash">Loading posts…</p>;
+    return <p className="font-mono text-sm text-ash">Loading posts&hellip;</p>;
   }
 
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="font-display text-2xl font-600 text-ink">Posts</h1>
+        <h1 className="font-display text-2xl font-600 text-ink dark:text-paper">Posts</h1>
         <Link
           to="/posts/new"
           className="rounded bg-safelight px-4 py-2 text-sm font-medium text-paper transition-opacity hover:opacity-90"
@@ -53,17 +53,17 @@ export default function PostList() {
       </div>
 
       {posts.length === 0 ? (
-        <div className="rounded-lg border border-dashed border-ash/30 py-16 text-center">
-          <p className="font-mono text-sm text-ash">No posts yet — write your first one.</p>
+        <div className="rounded-lg border border-dashed border-ash/30 py-16 text-center dark:border-ash/40">
+          <p className="font-mono text-sm text-ash">No posts yet &mdash; write your first one.</p>
         </div>
       ) : (
-        <div className="divide-y divide-ash/15 rounded-lg border border-ash/15">
+        <div className="divide-y divide-ash/15 rounded-lg border border-ash/15 dark:divide-ash/25 dark:border-ash/25">
           {posts.map((post) => (
             <div
               key={post._id}
-              className="flex items-center gap-4 px-4 py-3 transition-colors hover:bg-ash/5"
+              className="flex items-center gap-4 px-4 py-3 transition-colors hover:bg-ash/5 dark:hover:bg-ash/10"
             >
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded bg-graphite/5">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded bg-graphite/5 dark:bg-ash/10">
                 {post.coverImage?.url ? (
                   <img
                     src={post.coverImage.url}
@@ -76,7 +76,7 @@ export default function PostList() {
               </div>
 
               <div className="min-w-0 flex-1">
-                <p className="truncate font-display text-base font-600 text-ink">
+                <p className="truncate font-display text-base font-600 text-ink dark:text-paper">
                   {post.title}
                 </p>
                 <div className="mt-1 flex items-center gap-3 font-mono text-xs text-ash">

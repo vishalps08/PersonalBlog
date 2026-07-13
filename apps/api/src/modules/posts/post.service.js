@@ -41,10 +41,6 @@ async function updatePost(id, data) {
   return post;
 }
 
-async function deletePost(id) {
-  return Post.findByIdAndDelete(id);
-}
-
 async function getPostById(id) {
   return Post.findById(id);
 }

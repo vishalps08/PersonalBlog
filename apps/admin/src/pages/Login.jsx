@@ -27,29 +27,29 @@ export default function Login() {
     <div className="flex h-screen items-center justify-center bg-ink px-4">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-sm rounded-lg bg-paper p-8 shadow-xl"
+        className="w-full max-w-sm rounded-lg bg-paper p-8 shadow-xl dark:bg-night-surface"
       >
-        <h1 className="mb-1 font-display text-2xl font-700 text-ink">
+        <h1 className="mb-1 font-display text-2xl font-700 text-ink dark:text-paper">
           Personal Blog
         </h1>
         <p className="mb-6 font-mono text-xs text-ash">admin sign in</p>
 
-        <label className="mb-1 block text-sm text-ink">Email</label>
+        <label className="mb-1 block text-sm text-ink dark:text-paper">Email</label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="mb-4 w-full rounded border border-ash/30 bg-white px-3 py-2 text-sm outline-none focus:border-safelight"
+          className="mb-4 w-full rounded border border-ash/30 bg-white px-3 py-2 text-sm outline-none focus:border-safelight dark:border-ash/40 dark:bg-night dark:text-paper"
         />
 
-        <label className="mb-1 block text-sm text-ink">Password</label>
+        <label className="mb-1 block text-sm text-ink dark:text-paper">Password</label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          className="mb-6 w-full rounded border border-ash/30 bg-white px-3 py-2 text-sm outline-none focus:border-safelight"
+          className="mb-6 w-full rounded border border-ash/30 bg-white px-3 py-2 text-sm outline-none focus:border-safelight dark:border-ash/40 dark:bg-night dark:text-paper"
         />
 
         <button

@@ -1,6 +1,7 @@
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
@@ -10,6 +11,8 @@ export default {
         graphite: "#2A2826",
         ash: "#8A837A",
         safelight: "#A8402A",
+        night: "#141413",
+        "night-surface": "#1E1D1C",
       },
       fontFamily: {
         display: ["Fraunces", "serif"],

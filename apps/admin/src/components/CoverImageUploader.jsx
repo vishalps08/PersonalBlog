@@ -30,7 +30,7 @@ export default function CoverImageUploader({ value, onChange }) {
       </label>
 
       {value?.url ? (
-        <div className="group relative overflow-hidden rounded-lg border border-ash/20">
+        <div className="group relative overflow-hidden rounded-lg border border-ash/20 dark:border-ash/30">
           <img src={value.url} alt="" className="h-40 w-full object-cover" />
           <button
             type="button"
@@ -46,7 +46,7 @@ export default function CoverImageUploader({ value, onChange }) {
           type="button"
           onClick={() => inputRef.current?.click()}
           disabled={uploading}
-          className="flex h-40 w-full flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-ash/30 text-ash transition-colors hover:border-safelight hover:text-safelight disabled:opacity-50"
+          className="flex h-40 w-full flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-ash/30 text-ash transition-colors hover:border-safelight hover:text-safelight disabled:opacity-50 dark:border-ash/40"
         >
           <ImagePlus size={22} strokeWidth={1.5} />
           <span className="font-mono text-xs">

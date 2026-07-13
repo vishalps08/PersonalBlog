@@ -13,8 +13,8 @@ export default function CategoryFilter({ active, onChange }) {
             onClick={() => onChange(value)}
             className={`rounded-full px-3 py-1 font-mono text-xs transition-colors ${
               isActive
-                ? "bg-ink text-paper"
-                : "border border-ash/25 text-ash hover:border-safelight hover:text-safelight"
+                ? "bg-ink text-paper dark:bg-paper dark:text-ink"
+                : "border border-ash/25 text-ash hover:border-safelight hover:text-safelight dark:border-ash/35"
             }`}
           >
             {cat}

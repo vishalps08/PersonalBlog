@@ -23,7 +23,7 @@ This document tracks the progress of the Personal Blog project. The MVP will be 
 ## Repository
 
 * [x] Create API application
-* [ ] Verify API application
+* [x] Verify API application
 * [x] ~~Configure npm workspaces~~ — decided against; conflicts with "independent applications" philosophy. Using root scripts with `npm --prefix` instead.
 * [x] Create root README
 * [x] Standardize project scripts
@@ -33,103 +33,107 @@ This document tracks the progress of the Personal Blog project. The MVP will be 
 * [x] Configure Express (cors, cookie-parser, json body parsing, 404 + error handler)
 * [x] Add environment configuration
 * [x] Create health endpoint
-* [ ] Verify backend deployment locally
+* [x] Verify backend deployment locally
 
 ---
 
 # Phase 2 - Database
 
-* [ ] Create MongoDB Atlas project
-* [ ] Connect Express to MongoDB
-* [ ] Create database connection module
-* [ ] Verify connection
-* [ ] Add error handling
+* [x] Create MongoDB Atlas project
+* [x] Connect Express to MongoDB
+* [x] Create database connection module
+* [x] Verify connection
+* [x] Add error handling
 
 ---
 
 # Phase 3 - Authentication
 
-* [ ] Design authentication flow
-* [ ] Create login endpoint
-* [ ] JWT authentication
-* [ ] HTTP-only cookies
-* [ ] Protected routes
-* [ ] Logout
+* [x] Design authentication flow
+* [x] Create login endpoint
+* [x] JWT authentication
+* [x] HTTP-only cookies
+* [x] Protected routes
+* [x] Logout
 
 ---
 
 # Phase 4 - Admin Dashboard
 
-* [ ] Dashboard layout
-* [ ] Sidebar
-* [ ] Header
-* [ ] Route protection
+* [x] Dashboard layout
+* [x] Sidebar
+* [x] Header
+* [x] Route protection
 
 ---
 
 # Phase 5 - Categories
 
-* [ ] Category CRUD
-* [ ] Category API
-* [ ] Category selection in editor
+* [x] Category CRUD (hardcoded enum: Journal, Technology, Recommendations, Places, Life)
+* [x] Category API (validated via post schema)
+* [x] Category selection in editor
 
 ---
 
 # Phase 6 - Blog Posts
 
-* [ ] Create post
-* [ ] Edit post
-* [ ] Delete post
-* [ ] Drafts
-* [ ] Publish
-* [ ] Preview
+* [x] Create post
+* [x] Edit post
+* [x] Delete post
+* [x] Drafts
+* [x] Publish
+* [x] Preview
 
 ---
 
 # Phase 7 - Media
 
-* [ ] Cloudinary integration
-* [ ] Cover image upload
-* [ ] Image preview
+* [x] Cloudinary integration
+* [x] Cover image upload
+* [x] Image preview
 
 ---
 
 # Phase 8 - Public Blog
 
-* [ ] Homepage
-* [ ] Blog listing
-* [ ] Blog details
-* [ ] Categories
-* [ ] Search
-* [ ] About page
-* [ ] 404 page
+* [x] Homepage
+* [x] Blog listing
+* [x] Blog details
+* [x] Categories
+* [x] Search
+* [x] About page
+* [x] 404 page
 
 ---
 
 # Phase 9 - UI Polish
 
-* [ ] Responsive design
-* [ ] Loading states
-* [ ] Empty states
-* [ ] Error pages
-* [ ] Typography improvements
+* [x] Responsive design
+* [x] Loading states
+* [x] Empty states
+* [x] Error pages (error boundaries)
+* [x] Typography improvements
+* [x] Pagination
 
 ---
 
 # Phase 10 - Dark Mode
 
-* [ ] Theme context
-* [ ] Theme persistence
-* [ ] Theme toggle
-* [ ] Dark mode testing
+* [x] Theme context
+* [x] Theme persistence (localStorage + system preference)
+* [x] Theme toggle (blog header + admin sidebar)
+* [x] Dark mode across blog and admin
+* [x] Anti-flash inline script
 
 ---
 
 # Phase 11 - Deployment
 
+* [x] Vercel config for Blog (SPA rewrites)
+* [x] Vercel config for Admin (SPA rewrites)
 * [ ] Deploy Blog to Vercel
 * [ ] Deploy Admin to Vercel
-* [ ] Deploy API
+* [ ] Deploy API to Render
 * [ ] Configure production environment variables
 * [ ] Connect custom domain (optional)
 
@@ -137,11 +141,11 @@ This document tracks the progress of the Personal Blog project. The MVP will be 
 
 # MVP Completion Checklist
 
-* [ ] Authentication
-* [ ] Post management
-* [ ] Categories
-* [ ] Image upload
-* [ ] Search
-* [ ] Responsive UI
+* [x] Authentication
+* [x] Post management
+* [x] Categories
+* [x] Image upload
+* [x] Search
+* [x] Responsive UI
 * [ ] Deployment complete
 * [ ] First blog post published

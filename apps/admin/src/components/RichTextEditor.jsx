@@ -20,7 +20,9 @@ function ToolbarButton({ onClick, active, children, title }) {
       onClick={onClick}
       title={title}
       className={`rounded p-1.5 transition-colors ${
-        active ? "bg-ink text-paper" : "text-ash hover:bg-ash/10 hover:text-ink"
+        active
+          ? "bg-ink text-paper dark:bg-paper dark:text-ink"
+          : "text-ash hover:bg-ash/10 hover:text-ink dark:hover:text-paper"
       }`}
     >
       {children}
@@ -41,7 +43,7 @@ export default function RichTextEditor({ content, onChange }) {
     editorProps: {
       attributes: {
         class:
-          "prose prose-sm max-w-none min-h-[400px] focus:outline-none font-sans text-ink",
+          "prose prose-sm max-w-none min-h-[400px] focus:outline-none font-sans text-ink dark:prose-invert",
       },
     },
   });
@@ -59,8 +61,8 @@ export default function RichTextEditor({ content, onChange }) {
   }
 
   return (
-    <div className="rounded-lg border border-ash/20 bg-white">
-      <div className="flex items-center gap-1 border-b border-ash/15 px-3 py-2">
+    <div className="rounded-lg border border-ash/20 bg-white dark:border-ash/30 dark:bg-night-surface">
+      <div className="flex items-center gap-1 border-b border-ash/15 px-3 py-2 dark:border-ash/25">
         <ToolbarButton
           title="Bold"
           active={editor.isActive("bold")}
