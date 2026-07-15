@@ -94,6 +94,19 @@ async function getPublicBySlug(req, res, next) {
   }
 }
 
+async function incrementView(req, res, next) {
+  try {
+    const post = await postService.incrementViews(req.params.slug);
+    if (!post)
+      return res
+        .status(404)
+        .json({ success: false, message: "Post not found" });
+    res.status(200).json({ success: true, views: post.views });
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
   create,
   update,
@@ -102,4 +115,5 @@ module.exports = {
   listAdmin,
   listPublic,
   getPublicBySlug,
+  incrementView,
 };

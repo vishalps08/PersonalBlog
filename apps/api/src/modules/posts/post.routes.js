@@ -9,6 +9,7 @@ router.get("/", controller.listPublic);
 router.get("/admin/all", requireAuth, controller.listAdmin);
 router.get("/admin/:id", requireAuth, controller.getAdminById);
 router.get("/:slug", controller.getPublicBySlug);
+router.post("/:slug/view", controller.incrementView);
 
 router.post("/", requireAuth, controller.create);
 router.put("/:id", requireAuth, controller.update);

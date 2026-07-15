@@ -3,6 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import { getPostBySlug } from "../lib/posts";
 import { formatDate, readingTime } from "../lib/utils";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import useTrackView from "../hooks/useTrackView";
+import ViewCount from "../components/ViewCount";
+
 
 export default function PostDetail() {
   const { slug } = useParams();
@@ -11,6 +14,7 @@ export default function PostDetail() {
   const [loading, setLoading] = useState(true);
 
   useDocumentTitle(post?.title);
+  useTrackView(post?.slug);
 
   useEffect(() => {
     setLoading(true);
@@ -57,6 +61,8 @@ export default function PostDetail() {
         <span>{formatDate(post.publishedAt)}</span>
         <span>&middot;</span>
         <span>{readingTime(post.content)}</span>
+        <span>&middot;</span>
+        <ViewCount views={post.views} />
       </div>
       <h1 className="mb-6 font-display text-3xl font-700 leading-tight tracking-tight text-ink dark:text-paper sm:text-4xl">
         {post.title}

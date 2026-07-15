@@ -91,6 +91,15 @@ async function deletePost(id) {
   return post;
 }
 
+async function incrementViews(slug) {
+  const post = await Post.findOneAndUpdate(
+    { slug, status: "published" },
+    { $inc: { views: 1 } },
+    { new: true },
+  );
+  return post;
+}
+
 module.exports = {
   createPost,
   updatePost,
@@ -99,4 +108,5 @@ module.exports = {
   getPublishedPostBySlug,
   listPublishedPosts,
   listAllPosts,
+  incrementViews,
 };

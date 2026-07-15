@@ -27,6 +27,7 @@ const postSchema = new mongoose.Schema(
       publicId: { type: String }, // needed later to delete/replace on Cloudinary
     },
     publishedAt: { type: Date },
+    views: { type: Number, default: 0 },
   },
   { timestamps: true },
 );
