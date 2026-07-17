@@ -10,8 +10,8 @@
     {
       "name": "admin",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "apps/admin", "run", "dev"],
-      "port": 5174
+      "runtimeArgs": ["--prefix", "apps/admin", "run", "dev", "--", "--port", "5180", "--strictPort"],
+      "port": 5180
     }
   ]
 }

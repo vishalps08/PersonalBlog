@@ -1,16 +1,15 @@
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { ImagePlus, X } from "lucide-react";
+import { ImagePlus, X, Upload } from "lucide-react";
 import { uploadImage } from "../lib/posts";
 
 export default function CoverImageUploader({ value, onChange }) {
   const [uploading, setUploading] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
   const inputRef = useRef(null);
 
-  async function handleFileChange(e) {
-    const file = e.target.files?.[0];
+  async function handleFile(file) {
     if (!file) return;
-
     setUploading(true);
     try {
       const res = await uploadImage(file);
@@ -19,39 +18,74 @@ export default function CoverImageUploader({ value, onChange }) {
       toast.error(err.response?.data?.message || "Upload failed");
     } finally {
       setUploading(false);
-      e.target.value = "";
     }
+  }
+
+  function handleFileChange(e) {
+    handleFile(e.target.files?.[0]);
+    e.target.value = "";
+  }
+
+  function handleDrop(e) {
+    e.preventDefault();
+    setDragOver(false);
+    handleFile(e.dataTransfer.files?.[0]);
   }
 
   return (
     <div>
-      <label className="mb-2 block font-mono text-xs uppercase tracking-wide text-ash">
+      <label className="mb-2 block font-mono text-[11px] uppercase tracking-wider text-ash">
         Cover image
       </label>
 
       {value?.url ? (
-        <div className="group relative overflow-hidden rounded-lg border border-ash/20 dark:border-ash/30">
-          <img src={value.url} alt="" className="h-64 w-full object-cover" />
-          <button
-            type="button"
-            onClick={() => onChange(null)}
-            className="absolute right-2 top-2 rounded-full bg-ink/70 p-1.5 text-paper opacity-0 transition-opacity group-hover:opacity-100"
-            title="Remove"
-          >
-            <X size={14} />
-          </button>
+        <div className="group relative overflow-hidden rounded-xl border border-ash/15 dark:border-ash/25">
+          <img
+            src={value.url}
+            alt=""
+            className="mx-auto max-h-72 w-full object-contain bg-ash/5 dark:bg-ash/10"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-ink/0 opacity-0 transition-all group-hover:bg-ink/30 group-hover:opacity-100">
+            <button
+              type="button"
+              onClick={() => onChange(null)}
+              className="rounded-full bg-ink/80 p-2 text-paper transition-transform hover:scale-110"
+              title="Remove"
+            >
+              <X size={16} />
+            </button>
+          </div>
         </div>
       ) : (
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
+          onDragOver={(e) => {
+            e.preventDefault();
+            setDragOver(true);
+          }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={handleDrop}
           disabled={uploading}
-          className="flex h-64 w-full flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-ash/30 text-ash transition-colors hover:border-safelight hover:text-safelight disabled:opacity-50 dark:border-ash/40"
+          className={`flex h-48 w-full flex-col items-center justify-center gap-2.5 rounded-xl border-2 border-dashed transition-all disabled:opacity-50 ${
+            dragOver
+              ? "border-safelight bg-safelight/5 text-safelight"
+              : "border-ash/25 text-ash hover:border-safelight hover:text-safelight dark:border-ash/35"
+          }`}
         >
-          <ImagePlus size={22} strokeWidth={1.5} />
-          <span className="font-mono text-xs">
-            {uploading ? "Uploading…" : "Click to upload"}
-          </span>
+          {uploading ? (
+            <>
+              <Upload size={24} strokeWidth={1.5} className="animate-bounce" />
+              <span className="font-mono text-xs">Uploading...</span>
+            </>
+          ) : (
+            <>
+              <ImagePlus size={24} strokeWidth={1.5} />
+              <span className="font-mono text-xs">
+                Click or drag to upload
+              </span>
+            </>
+          )}
         </button>
       )}
 

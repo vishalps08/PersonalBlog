@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { getPostBySlug } from "../lib/posts";
 import { formatDate, readingTime } from "../lib/utils";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import useMetaTags from "../hooks/useMetaTags";
 import useTrackView from "../hooks/useTrackView";
 import ViewCount from "../components/ViewCount";
 import ReadingProgress from "../components/ReadingProgress";
@@ -14,6 +15,13 @@ export default function PostDetail() {
   const [loading, setLoading] = useState(true);
 
   useDocumentTitle(post?.title);
+  useMetaTags({
+    title: post?.title,
+    description: post?.excerpt,
+    image: post?.coverImage?.url,
+    url: post ? `${window.location.origin}/posts/${post.slug}` : undefined,
+    type: "article",
+  });
 
   const handleViewed = useCallback(
     (views) => setPost((p) => (p ? { ...p, views } : p)),

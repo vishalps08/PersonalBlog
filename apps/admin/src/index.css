@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-paper text-ink font-sans antialiased;
 }
@@ -19,4 +23,66 @@ body {
   background-size: 100% 22px;
   background-position: center;
   background-repeat: repeat-y;
+}
+
+/* Shimmer skeleton */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, rgba(138,131,122,0.06) 25%, rgba(138,131,122,0.12) 50%, rgba(138,131,122,0.06) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.dark .skeleton-shimmer {
+  background: linear-gradient(90deg, rgba(138,131,122,0.1) 25%, rgba(138,131,122,0.2) 50%, rgba(138,131,122,0.1) 75%);
+  background-size: 800px 100%;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+/* Modal overlay fade */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in { animation: fadeIn 0.15s ease-out both; }
+.animate-scale-in { animation: scaleIn 0.2s ease-out both; }
+
+/* Selection color */
+::selection {
+  background: rgba(168, 64, 42, 0.2);
+  color: inherit;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(138,131,122,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(138,131,122,0.5); }
+
+/* TipTap editor styles */
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: theme("colors.ash");
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
 }

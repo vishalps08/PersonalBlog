@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Aperture } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
@@ -24,42 +25,68 @@ export default function Login() {
   }
 
   return (
-    <div className="flex h-screen items-center justify-center bg-ink px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-sm rounded-lg bg-paper p-8 shadow-xl dark:bg-night-surface"
-      >
-        <h1 className="mb-1 font-display text-2xl font-700 text-ink dark:text-paper">
-          The Safelight
-        </h1>
-        <p className="mb-6 font-mono text-xs text-ash">admin sign in</p>
+    <div className="flex min-h-screen items-center justify-center bg-ink px-4">
+      <div className="w-full max-w-sm animate-fade-in-up">
+        <div className="mb-8 text-center">
+          <Aperture
+            size={36}
+            strokeWidth={1.25}
+            className="mx-auto mb-4 text-safelight"
+          />
+          <h1 className="font-display text-3xl font-700 text-paper">
+            The Safelight
+          </h1>
+          <p className="mt-1 font-mono text-xs tracking-wider text-ash">
+            ADMIN
+          </p>
+        </div>
 
-        <label className="mb-1 block text-sm text-ink dark:text-paper">Email</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className="mb-4 w-full rounded border border-ash/30 bg-white px-3 py-2 text-sm outline-none focus:border-safelight dark:border-ash/40 dark:bg-night dark:text-paper"
-        />
-
-        <label className="mb-1 block text-sm text-ink dark:text-paper">Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className="mb-6 w-full rounded border border-ash/30 bg-white px-3 py-2 text-sm outline-none focus:border-safelight dark:border-ash/40 dark:bg-night dark:text-paper"
-        />
-
-        <button
-          type="submit"
-          disabled={submitting}
-          className="w-full rounded bg-safelight py-2 text-sm font-medium text-paper transition-opacity hover:opacity-90 disabled:opacity-50"
+        <form
+          onSubmit={handleSubmit}
+          className="rounded-2xl bg-paper p-8 shadow-2xl dark:bg-night-surface"
         >
-          {submitting ? "Signing in…" : "Sign in"}
-        </button>
-      </form>
+          <div className="mb-5">
+            <label className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-ash">
+              Email
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full rounded-lg border border-ash/25 bg-white px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-safelight focus:ring-1 focus:ring-safelight/20 dark:border-ash/35 dark:bg-night dark:text-paper"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-ash">
+              Password
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full rounded-lg border border-ash/25 bg-white px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-safelight focus:ring-1 focus:ring-safelight/20 dark:border-ash/35 dark:bg-night dark:text-paper"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={submitting}
+            className="w-full rounded-lg bg-safelight py-2.5 text-sm font-medium text-paper transition-all hover:bg-safelight/90 disabled:opacity-50"
+          >
+            {submitting ? (
+              <span className="inline-flex items-center gap-2">
+                <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-paper/30 border-t-paper" />
+                Signing in...
+              </span>
+            ) : (
+              "Sign in"
+            )}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
