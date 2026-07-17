@@ -61,11 +61,11 @@ export default function PostDetail() {
       <ReadingProgress />
       <article className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10">
         {post.coverImage?.url && (
-          <div className="mb-8 overflow-hidden rounded-xl shadow-lg">
+          <div className="mb-8 overflow-hidden rounded-xl bg-ash/5 shadow-lg dark:bg-ash/10">
             <img
               src={post.coverImage.url}
               alt=""
-              className="h-[260px] w-full object-cover sm:h-[400px]"
+              className="mx-auto block max-h-[500px] w-full object-contain"
             />
           </div>
         )}
@@ -84,7 +84,7 @@ export default function PostDetail() {
           {post.title}
         </h1>
         <div
-          className="prose prose-neutral max-w-none prose-headings:font-display prose-p:leading-relaxed prose-a:text-safelight prose-img:rounded-xl dark:prose-invert"
+          className="prose prose-neutral max-w-none overflow-x-auto prose-headings:font-display prose-p:leading-relaxed prose-a:text-safelight prose-img:mx-auto prose-img:max-h-[500px] prose-img:rounded-xl prose-img:object-contain dark:prose-invert"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
         <div className="mt-14 border-t border-ash/15 pt-6 dark:border-ash/25">
