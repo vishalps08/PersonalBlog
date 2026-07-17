@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { trackPostView } from "../lib/posts";
 
-export default function useTrackView(slug) {
+export default function useTrackView(slug, onViewed) {
   const tracked = useRef(false);
 
   useEffect(() => {
@@ -11,8 +11,10 @@ export default function useTrackView(slug) {
 
     tracked.current = true;
     sessionStorage.setItem(key, "1");
-    trackPostView(slug).catch(() => {
-      // non-critical — don't block reading if this fails
-    });
-  }, [slug]);
+    trackPostView(slug)
+      .then((res) => {
+        if (onViewed) onViewed(res.data.views);
+      })
+      .catch(() => {});
+  }, [slug, onViewed]);
 }

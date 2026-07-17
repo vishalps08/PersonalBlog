@@ -11,10 +11,10 @@ export default function CategoryFilter({ active, onChange }) {
           <button
             key={cat}
             onClick={() => onChange(value)}
-            className={`rounded-full px-3 py-1 font-mono text-xs transition-colors ${
+            className={`rounded-full px-3.5 py-1.5 font-mono text-xs transition-all duration-200 ${
               isActive
-                ? "bg-ink text-paper dark:bg-paper dark:text-ink"
-                : "border border-ash/25 text-ash hover:border-safelight hover:text-safelight dark:border-ash/35"
+                ? "bg-ink text-paper shadow-sm dark:bg-paper dark:text-ink"
+                : "border border-ash/20 text-ash hover:border-safelight hover:text-safelight dark:border-ash/30"
             }`}
           >
             {cat}

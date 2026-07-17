@@ -1,11 +1,11 @@
 export function PostCardSkeleton() {
   return (
-    <div className="flex animate-pulse gap-5 py-6">
-      <div className="h-24 w-24 shrink-0 rounded bg-ash/10 dark:bg-ash/20" />
-      <div className="min-w-0 flex-1 space-y-2 pt-1">
-        <div className="h-3 w-24 rounded bg-ash/10 dark:bg-ash/20" />
-        <div className="h-5 w-3/4 rounded bg-ash/10 dark:bg-ash/20" />
-        <div className="h-3 w-full rounded bg-ash/10 dark:bg-ash/20" />
+    <div className="flex gap-5 py-6 sm:gap-6">
+      <div className="skeleton-shimmer h-[88px] w-[88px] shrink-0 rounded-xl sm:h-[100px] sm:w-[100px]" />
+      <div className="min-w-0 flex-1 space-y-2.5 pt-1">
+        <div className="skeleton-shimmer h-3 w-24 rounded-full" />
+        <div className="skeleton-shimmer h-5 w-3/4 rounded" />
+        <div className="skeleton-shimmer h-3 w-full rounded" />
       </div>
     </div>
   );
@@ -13,10 +13,8 @@ export function PostCardSkeleton() {
 
 export function HeroSkeleton() {
   return (
-    <div className="mb-4 animate-pulse">
-      <div className="mb-5 h-[240px] w-full rounded-lg bg-ash/10 dark:bg-ash/20 sm:h-[360px]" />
-      <div className="mb-2 h-3 w-32 rounded bg-ash/10 dark:bg-ash/20" />
-      <div className="h-9 w-2/3 rounded bg-ash/10 dark:bg-ash/20" />
+    <div className="mb-8 overflow-hidden rounded-2xl">
+      <div className="skeleton-shimmer aspect-[16/9] w-full sm:aspect-[2/1]" />
     </div>
   );
 }

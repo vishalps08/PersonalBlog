@@ -13,11 +13,11 @@ export default function Pagination({ page, pages, onChange }) {
   }
 
   return (
-    <div className="mt-10 flex items-center justify-center gap-1">
+    <div className="mt-12 flex items-center justify-center gap-1.5">
       <button
         onClick={() => onChange(page - 1)}
         disabled={page <= 1}
-        className="rounded p-1.5 text-ash transition-colors hover:text-ink disabled:opacity-30 dark:hover:text-paper"
+        className="rounded-full p-2 text-ash transition-all hover:bg-ash/10 hover:text-ink disabled:opacity-30 disabled:hover:bg-transparent dark:hover:bg-ash/20 dark:hover:text-paper"
       >
         <ChevronLeft size={18} />
       </button>
@@ -30,10 +30,10 @@ export default function Pagination({ page, pages, onChange }) {
           <button
             key={item}
             onClick={() => onChange(item)}
-            className={`min-w-[32px] rounded px-2 py-1 font-mono text-xs transition-colors ${
+            className={`min-w-[36px] rounded-full px-2 py-1.5 font-mono text-xs transition-all duration-200 ${
               item === page
-                ? "bg-ink text-paper dark:bg-paper dark:text-ink"
-                : "text-ash hover:text-ink dark:hover:text-paper"
+                ? "bg-ink text-paper shadow-sm dark:bg-paper dark:text-ink"
+                : "text-ash hover:bg-ash/10 hover:text-ink dark:hover:bg-ash/20 dark:hover:text-paper"
             }`}
           >
             {item}
@@ -43,7 +43,7 @@ export default function Pagination({ page, pages, onChange }) {
       <button
         onClick={() => onChange(page + 1)}
         disabled={page >= pages}
-        className="rounded p-1.5 text-ash transition-colors hover:text-ink disabled:opacity-30 dark:hover:text-paper"
+        className="rounded-full p-2 text-ash transition-all hover:bg-ash/10 hover:text-ink disabled:opacity-30 disabled:hover:bg-transparent dark:hover:bg-ash/20 dark:hover:text-paper"
       >
         <ChevronRight size={18} />
       </button>
