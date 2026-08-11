@@ -1,0 +1,7 @@
+https://personalblog-9mmm.onrender.com
+
+https://personal-blog-taupe-ten.vercel.app
+https://personal-blog-pxlh.vercel.app
+
+
+CLIENT_URLS=https://personal-blog-taupe-ten.vercel.app,https://personal-blog-pxlh.vercel.app

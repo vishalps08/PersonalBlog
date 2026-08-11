@@ -4,6 +4,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
 import Placeholder from "@tiptap/extension-placeholder";
 import Link from "@tiptap/extension-link";
+import Youtube from "@tiptap/extension-youtube";
 import toast from "react-hot-toast";
 import {
   Bold,
@@ -20,6 +21,8 @@ import {
   Minus,
   Undo2,
   Redo2,
+  Braces,
+  Video,
 } from "lucide-react";
 import { uploadImage } from "../lib/posts";
 
@@ -53,6 +56,7 @@ export default function RichTextEditor({ content, onChange }) {
       StarterKit,
       Image,
       Link.configure({ openOnClick: false }),
+      Youtube.configure({ controls: true, nocookie: true }),
       Placeholder.configure({ placeholder: "Start writing..." }),
     ],
     content: content || "",
@@ -74,6 +78,13 @@ export default function RichTextEditor({ content, onChange }) {
     }
     const url = window.prompt("URL");
     if (url) editor.chain().focus().setLink({ href: url }).run();
+  }
+
+  function addYoutubeVideo() {
+    const url = window.prompt("YouTube URL");
+    if (url) {
+      editor.chain().focus().setYoutubeVideo({ src: url }).run();
+    }
   }
 
   async function handleImageUpload(e) {
@@ -215,6 +226,23 @@ export default function RichTextEditor({ content, onChange }) {
           onClick={() => fileInputRef.current?.click()}
         >
           <ImagePlus size={S} strokeWidth={SW} />
+        </ToolbarButton>
+        <ToolbarButton
+          title="YouTube video"
+          onClick={addYoutubeVideo}
+        >
+          <Video size={S} strokeWidth={SW} />
+        </ToolbarButton>
+
+        <Divider />
+
+        {/* Code block */}
+        <ToolbarButton
+          title="Code block"
+          active={editor.isActive("codeBlock")}
+          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        >
+          <Braces size={S} strokeWidth={SW} />
         </ToolbarButton>
       </div>
 

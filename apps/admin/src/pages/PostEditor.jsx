@@ -10,6 +10,7 @@ import {
 } from "../lib/posts";
 import RichTextEditor from "../components/RichTextEditor";
 import CoverImageUploader from "../components/CoverImageUploader";
+import TemplateSelector from "../components/TemplateSelector";
 
 const emptyPost = {
   title: "",
@@ -44,6 +45,7 @@ export default function PostEditor() {
   const [saving, setSaving] = useState(false);
   const [preview, setPreview] = useState(false);
   const [lastSaved, setLastSaved] = useState(null);
+  const [templateChosen, setTemplateChosen] = useState(isEditMode);
   const autoSaveTimer = useRef(null);
 
   useEffect(() => {
@@ -101,6 +103,15 @@ export default function PostEditor() {
     } finally {
       setSaving(false);
     }
+  }
+
+  function handleTemplateSelect(content) {
+    setPost((p) => ({ ...p, content }));
+    setTemplateChosen(true);
+  }
+
+  if (!templateChosen) {
+    return <TemplateSelector onSelect={handleTemplateSelect} />;
   }
 
   if (loading) {
