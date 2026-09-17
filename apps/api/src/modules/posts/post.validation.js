@@ -28,6 +28,18 @@ function validatePostPayload(body, { partial = false } = {}) {
       errors.push("coverImage must include both url and publicId");
     }
   }
+  if (body.galleryImages !== undefined) {
+    if (!Array.isArray(body.galleryImages)) {
+      errors.push("galleryImages must be an array");
+    } else {
+      for (const img of body.galleryImages) {
+        if (!img?.url || !img?.publicId) {
+          errors.push("Each gallery image must include url and publicId");
+          break;
+        }
+      }
+    }
+  }
 
   return errors;
 }

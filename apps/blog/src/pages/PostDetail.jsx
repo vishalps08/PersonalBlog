@@ -7,6 +7,7 @@ import useMetaTags from "../hooks/useMetaTags";
 import useTrackView from "../hooks/useTrackView";
 import ViewCount from "../components/ViewCount";
 import ReadingProgress from "../components/ReadingProgress";
+import PhotoGallery from "../components/PhotoGallery";
 
 export default function PostDetail() {
   const { slug } = useParams();
@@ -95,6 +96,9 @@ export default function PostDetail() {
           className="prose prose-neutral max-w-none overflow-x-auto prose-headings:font-display prose-p:leading-relaxed prose-a:text-safelight prose-img:mx-auto prose-img:max-h-[500px] prose-img:rounded-xl prose-img:object-contain dark:prose-invert"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+        {post.galleryImages?.length > 0 && (
+          <PhotoGallery images={post.galleryImages} />
+        )}
         <div className="mt-14 border-t border-ash/15 pt-6 dark:border-ash/25">
           <Link
             to="/"

@@ -86,6 +86,11 @@ async function deletePost(id) {
   if (post.coverImage?.publicId) {
     await cloudinary.uploader.destroy(post.coverImage.publicId);
   }
+  if (post.galleryImages?.length) {
+    await Promise.all(
+      post.galleryImages.map((img) => cloudinary.uploader.destroy(img.publicId))
+    );
+  }
 
   await Post.findByIdAndDelete(id);
   return post;

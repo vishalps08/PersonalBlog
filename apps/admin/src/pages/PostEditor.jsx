@@ -11,6 +11,7 @@ import {
 import RichTextEditor from "../components/RichTextEditor";
 import CoverImageUploader from "../components/CoverImageUploader";
 import TemplateSelector from "../components/TemplateSelector";
+import GalleryUploader from "../components/GalleryUploader";
 
 const emptyPost = {
   title: "",
@@ -18,6 +19,7 @@ const emptyPost = {
   category: CATEGORIES[0],
   status: "draft",
   coverImage: null,
+  galleryImages: [],
 };
 
 function stripHtml(html) {
@@ -87,6 +89,7 @@ export default function PostEditor() {
     setSaving(true);
     const payload = { ...post, status };
     if (!payload.coverImage) delete payload.coverImage;
+    if (!payload.galleryImages?.length) delete payload.galleryImages;
 
     try {
       if (isEditMode) {
@@ -217,6 +220,27 @@ export default function PostEditor() {
             className="prose prose-neutral max-w-none prose-headings:font-display prose-a:text-safelight dark:prose-invert"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+          {post.galleryImages?.length > 0 && (
+            <div className="mt-8">
+              <h2 className="mb-4 font-display text-xl font-600 text-ink dark:text-paper">
+                Photos
+              </h2>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                {post.galleryImages.map((img) => (
+                  <div
+                    key={img.publicId}
+                    className="aspect-square overflow-hidden rounded-lg"
+                  >
+                    <img
+                      src={img.url}
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       ) : (
         /* Edit mode */
@@ -253,6 +277,13 @@ export default function PostEditor() {
             <CoverImageUploader
               value={post.coverImage}
               onChange={(img) => updateField("coverImage", img)}
+            />
+          </div>
+
+          <div className="mb-6">
+            <GalleryUploader
+              value={post.galleryImages || []}
+              onChange={(imgs) => updateField("galleryImages", imgs)}
             />
           </div>
 

@@ -24,8 +24,14 @@ const postSchema = new mongoose.Schema(
     status: { type: String, enum: ["draft", "published"], default: "draft" },
     coverImage: {
       url: { type: String },
-      publicId: { type: String }, // needed later to delete/replace on Cloudinary
+      publicId: { type: String },
     },
+    galleryImages: [
+      {
+        url: { type: String, required: true },
+        publicId: { type: String, required: true },
+      },
+    ],
     publishedAt: { type: Date },
     views: { type: Number, default: 0 },
   },
